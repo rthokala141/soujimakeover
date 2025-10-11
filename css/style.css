@@ -178,11 +178,12 @@ nav {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-bg.jpg') no-repeat center center/cover;
+    /* Soft brand gradient background */
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.25) 0%, rgba(78, 205, 196, 0.25) 100%);
     display: flex;
     align-items: center;
     text-align: center;
-    color: white;
+    color: var(--dark-color);
     padding: 0 1rem;
     margin-top: 80px;
 }
@@ -195,8 +196,7 @@ nav {
 .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: var(--dark-color);
 }
 
 .hero p {
