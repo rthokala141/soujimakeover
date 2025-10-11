@@ -1,0 +1,14 @@
+# Dependencies and system files
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Build output (none for static, but keep pattern)
+dist/
+build/
+
+# Env and editor
+.env
+*.log
+.vscode/
+.idea/

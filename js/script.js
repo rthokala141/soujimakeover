@@ -1,0 +1,234 @@
+// Mobile Navigation Toggle
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+const links = document.querySelectorAll('.nav-links li');
+
+hamburger.addEventListener('click', () => {
+    // Toggle Nav
+    navLinks.classList.toggle('active');
+    // Animate Links
+    links.forEach((link, index) => {
+        if (link.style.animation) {
+            link.style.animation = '';
+        } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+        }
+    });
+    // Hamburger Animation
+    hamburger.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+links.forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+        links.forEach(link => {
+            link.style.animation = '';
+        });
+    });
+});
+
+// Smooth Scrolling for Navigation Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            const headerOffset = 80;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Sticky Header on Scroll
+const header = document.querySelector('header');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll <= 0) {
+        header.classList.remove('scroll-up');
+        return;
+    }
+    
+    if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+        // Scroll Down
+        header.classList.remove('scroll-up');
+        header.classList.add('scroll-down');
+    } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
+        // Scroll Up
+        header.classList.remove('scroll-down');
+        header.classList.add('scroll-up');
+    }
+    
+    lastScroll = currentScroll;
+});
+
+// Portfolio Gallery
+const portfolioItems = [
+    {
+        image: 'images/portfolio/1.jpg',
+        title: 'Bridal Makeup',
+        category: 'makeup'
+    },
+    {
+        image: 'images/portfolio/2.jpg',
+        title: 'Hair Styling',
+        category: 'hairstyle'
+    },
+    {
+        image: 'images/portfolio/3.jpg',
+        title: 'Saree Draping',
+        category: 'saree'
+    },
+    {
+        image: 'images/portfolio/4.jpg',
+        title: 'Party Makeup',
+        category: 'makeup'
+    },
+    {
+        image: 'images/portfolio/5.jpg',
+        title: 'Bridal Hairstyle',
+        category: 'hairstyle'
+    },
+    {
+        image: 'images/portfolio/6.jpg',
+        title: 'Traditional Look',
+        category: 'saree'
+    }
+];
+
+const portfolioGrid = document.querySelector('.portfolio-grid');
+
+// Function to create portfolio items
+function createPortfolioItems() {
+    portfolioGrid.innerHTML = ''; // Clear existing items
+    
+    portfolioItems.forEach((item, index) => {
+        const portfolioItem = document.createElement('div');
+        portfolioItem.className = 'portfolio-item';
+        portfolioItem.setAttribute('data-category', item.category);
+        
+        portfolioItem.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <div class="portfolio-overlay">
+                <h3>${item.title}</h3>
+                <p>${item.category}</p>
+            </div>
+        `;
+        
+        portfolioGrid.appendChild(portfolioItem);
+    });
+}
+
+// Initialize portfolio
+createPortfolioItems();
+
+// Testimonial Slider
+let currentTestimonial = 0;
+const testimonials = document.querySelectorAll('.testimonial');
+const totalTestimonials = testimonials.length;
+
+function showTestimonial(index) {
+    testimonials.forEach((testimonial, i) => {
+        testimonial.style.display = i === index ? 'block' : 'none';
+    });
+}
+
+// Auto-rotate testimonials
+setInterval(() => {
+    currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
+    showTestimonial(currentTestimonial);
+}, 5000);
+
+// Show first testimonial initially
+showTestimonial(currentTestimonial);
+
+// Form Submission
+const contactForm = document.getElementById('booking-form');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const formData = new FormData(contactForm);
+        const formValues = Object.fromEntries(formData.entries());
+        
+        // Here you would typically send the form data to a server
+        console.log('Form submitted:', formValues);
+        
+        // Show success message
+        alert('Thank you for your booking! We will contact you shortly to confirm your appointment.');
+        
+        // Reset form
+        contactForm.reset();
+    });
+}
+
+// Add animation on scroll
+const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.service-card, .portfolio-item, .about-content > div, .testimonial, form, .contact-info');
+    
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }
+    });
+};
+
+// Set initial styles for animation
+document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.service-card, .portfolio-item, .about-content > div, .testimonial, form, .contact-info');
+    
+    elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+    });
+    
+    // Initial check in case elements are already in view
+    animateOnScroll();
+});
+
+// Add scroll event listener
+window.addEventListener('scroll', animateOnScroll);
+
+// Add active class to current section in navigation
+const sections = document.querySelectorAll('section');
+const navItems = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === `#${current}`) {
+            item.classList.add('active');
+        }
+    });
+});
