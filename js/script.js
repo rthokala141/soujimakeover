@@ -77,36 +77,12 @@ window.addEventListener('scroll', () => {
 
 // Portfolio Gallery
 const portfolioItems = [
-    {
-        image: 'https://source.unsplash.com/featured/800x600/?bridal,makeup',
-        title: 'Bridal Makeup',
-        category: 'makeup'
-    },
-    {
-        image: 'https://source.unsplash.com/featured/800x600/?hairstyle,bridal-hair',
-        title: 'Hair Styling',
-        category: 'hairstyle'
-    },
-    {
-        image: 'https://source.unsplash.com/featured/800x600/?saree,indian,bride',
-        title: 'Saree Draping',
-        category: 'saree'
-    },
-    {
-        image: 'https://source.unsplash.com/featured/800x600/?party,makeup,glam',
-        title: 'Party Makeup',
-        category: 'makeup'
-    },
-    {
-        image: 'https://source.unsplash.com/featured/800x600/?bridal,hairstyle',
-        title: 'Bridal Hairstyle',
-        category: 'hairstyle'
-    },
-    {
-        image: 'https://source.unsplash.com/featured/800x600/?indian,traditional,makeup',
-        title: 'Traditional Look',
-        category: 'saree'
-    }
+    { image: 'images/portfolio/1.svg', title: 'Bridal Makeup', category: 'makeup' },
+    { image: 'images/portfolio/2.svg', title: 'Hair Styling', category: 'hairstyle' },
+    { image: 'images/portfolio/3.svg', title: 'Saree Draping', category: 'saree' },
+    { image: 'images/portfolio/4.svg', title: 'Party Makeup', category: 'makeup' },
+    { image: 'images/portfolio/5.svg', title: 'Bridal Hairstyle', category: 'hairstyle' },
+    { image: 'images/portfolio/6.svg', title: 'Traditional Look', category: 'saree' }
 ];
 
 const portfolioGrid = document.querySelector('.portfolio-grid');
@@ -121,7 +97,7 @@ function createPortfolioItems() {
         portfolioItem.setAttribute('data-category', item.category);
         
         portfolioItem.innerHTML = `
-            <img src="${item.image}" alt="${item.title}">
+            <img src="${item.image}" alt="${item.title}" onerror="this.onerror=null;this.src='images/portfolio/1.svg';">
             <div class="portfolio-overlay">
                 <h3>${item.title}</h3>
                 <p>${item.category}</p>
@@ -155,25 +131,48 @@ setInterval(() => {
 // Show first testimonial initially
 showTestimonial(currentTestimonial);
 
-// Form Submission
+// Form Submission (WhatsApp or Email)
 const contactForm = document.getElementById('booking-form');
 
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        // Get form values
-        const formData = new FormData(contactForm);
-        const formValues = Object.fromEntries(formData.entries());
-        
-        // Here you would typically send the form data to a server
-        console.log('Form submitted:', formValues);
-        
-        // Show success message
-        alert('Thank you for your booking! We will contact you shortly to confirm your appointment.');
-        
-        // Reset form
-        contactForm.reset();
+
+        const fd = new FormData(contactForm);
+        const data = Object.fromEntries(fd.entries());
+
+        const name = (data.name || '').trim();
+        const email = (data.email || '').trim();
+        const phone = (data.phone || '').trim();
+        const service = data.service || '';
+        const date = data.date || '';
+        const notes = (data.notes || '').trim();
+        const method = data.send_via || 'whatsapp';
+
+        // Build message body
+        const lines = [
+            'New Booking Request',
+            `Name: ${name}`,
+            `Email: ${email}`,
+            `Phone: ${phone}`,
+            `Service: ${service}`,
+            `Preferred Date: ${date}`,
+            notes ? `Notes: ${notes}` : null
+        ].filter(Boolean);
+        const message = lines.join('\n');
+        const encoded = encodeURIComponent(message);
+
+        if (method === 'email') {
+            const subject = encodeURIComponent(`New Booking Request - ${name || 'Client'}`);
+            const mailto = `mailto:soujanyateja1209@gmail.com?subject=${subject}&body=${encoded}`;
+            window.location.href = mailto; // Opens email client
+        } else {
+            const waLink = `https://wa.me/918978422561?text=${encoded}`;
+            window.open(waLink, '_blank');
+        }
+
+        // Optional: give feedback
+        alert('Opening your selected app to send the booking details. If nothing opens, please ensure pop-ups are allowed.');
     });
 }
 
