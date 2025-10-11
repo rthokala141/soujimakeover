@@ -78,32 +78,32 @@ window.addEventListener('scroll', () => {
 // Portfolio Gallery
 const portfolioItems = [
     {
-        image: 'images/portfolio/1.jpg',
+        image: 'https://source.unsplash.com/featured/800x600/?bridal,makeup',
         title: 'Bridal Makeup',
         category: 'makeup'
     },
     {
-        image: 'images/portfolio/2.jpg',
+        image: 'https://source.unsplash.com/featured/800x600/?hairstyle,bridal-hair',
         title: 'Hair Styling',
         category: 'hairstyle'
     },
     {
-        image: 'images/portfolio/3.jpg',
+        image: 'https://source.unsplash.com/featured/800x600/?saree,indian,bride',
         title: 'Saree Draping',
         category: 'saree'
     },
     {
-        image: 'images/portfolio/4.jpg',
+        image: 'https://source.unsplash.com/featured/800x600/?party,makeup,glam',
         title: 'Party Makeup',
         category: 'makeup'
     },
     {
-        image: 'images/portfolio/5.jpg',
+        image: 'https://source.unsplash.com/featured/800x600/?bridal,hairstyle',
         title: 'Bridal Hairstyle',
         category: 'hairstyle'
     },
     {
-        image: 'images/portfolio/6.jpg',
+        image: 'https://source.unsplash.com/featured/800x600/?indian,traditional,makeup',
         title: 'Traditional Look',
         category: 'saree'
     }
