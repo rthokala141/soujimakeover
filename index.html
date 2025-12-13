@@ -76,8 +76,8 @@
     <header>
         <nav>
             <a href="#home" class="logo" aria-label="Soujanya Makeovers Home">
-                <img class="logo-img" src="images/logo.png" alt="Soujanya Makeovers logo" onerror="this.style.display='none'">
-                <span class="logo-text">Soujanya Makeovers</span>
+                <img id="brandLogo" class="logo-img" src="images/portfolio/ChatGPT Image Dec 13, 2025 at 12_00_48 PM.png" alt="Soujanya Makeovers logo" onerror="this.style.display='none'">
+                <span class="logo-text" style="display:none;">Soujanya Makeovers</span>
             </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -301,5 +301,24 @@
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"></iframe>
     <script src="js/script.js"></script>
+    <script>
+      // Hide text wordmark when logo image is present
+      (function(){
+        var img = document.getElementById('brandLogo');
+        var text = document.querySelector('.logo-text');
+        function toggle(){
+          if (!img || !text) return;
+          var visible = img.style.display !== 'none' && img.complete && img.naturalWidth > 0;
+          text.style.display = visible ? 'none' : '';
+        }
+        if (img) {
+          if (!img.complete) {
+            img.addEventListener('load', toggle);
+            img.addEventListener('error', toggle);
+          }
+          toggle();
+        }
+      })();
+    </script>
 </body>
 </html>

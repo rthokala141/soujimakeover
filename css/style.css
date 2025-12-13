@@ -71,7 +71,9 @@ img {
     display: inline-block;
     background-color: var(--primary-color);
     color: white;
-    padding: 12px 30px;
+    padding: 0 28px;          /* fixed height button for header alignment */
+    height: 44px;
+    line-height: 44px;
     border-radius: 50px;
     font-weight: 500;
     text-transform: uppercase;
@@ -115,7 +117,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 5%;
+    padding: 0 5%;
+    min-height: 180px; /* match desktop logo height for vertical centering */
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -125,11 +128,13 @@ nav {
     align-items: center;
     gap: 10px;
     text-decoration: none;
+    overflow: visible;
+    height: 180px; /* size by height only to avoid stretching */
 }
 
 .logo-img {
-    height: 40px;
-    width: auto;
+    height: 100%;      /* follow the container height */
+    width: auto;       /* preserve aspect ratio */
     display: block;
 }
 
@@ -171,11 +176,14 @@ nav {
 .nav-links {
     display: flex;
     gap: 2rem;
+    align-items: center; /* vertically center menu items & button */
 }
 
 .nav-links a {
     font-weight: 500;
     position: relative;
+    display: flex;            /* center link text in tall header */
+    align-items: center;
 }
 
 .nav-links a::after {
@@ -226,7 +234,7 @@ nav {
     text-align: center;
     color: var(--dark-color);
     padding: 0 1rem;
-    margin-top: 80px;
+    margin-top: 180px; /* offset for taller fixed header */
 }
 
 .hero-content {
@@ -657,7 +665,9 @@ footer {
         font-size: 1.4rem;
         letter-spacing: .15px;
     }
-    .logo-img { height: 36px; }
+    .logo { height: 110px; }
+    .hero { margin-top: 110px; }
+    .logo-img { height: 100%; }
 
     .about-content, .contact-container {
         grid-template-columns: 1fr;
@@ -708,7 +718,9 @@ footer {
         font-size: 1.25rem;
         letter-spacing: .1px;
     }
-    .logo-img { height: 32px; }
+    .logo { height: 90px; }
+    .hero { margin-top: 90px; }
+    .logo-img { height: 100%; }
 
     .cta-button {
         padding: 10px 20px;
