@@ -115,7 +115,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%;
+    padding: 1.2rem 5%;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -124,6 +124,7 @@ nav {
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    text-decoration: none;
 }
 
 .logo-mark {
@@ -136,10 +137,25 @@ nav {
 
 .logo-text {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    color: var(--primary-color);
-    letter-spacing: .3px;
+    letter-spacing: .2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+}
+
+.logo-text::after {
+    content: '';
+    display: block;
+    width: 88px;
+    height: 2px;
+    margin-top: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+    opacity: .9;
 }
 
 .logo:hover .logo-mark {
@@ -632,7 +648,8 @@ footer {
         height: 32px;
     }
     .logo-text {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
+        letter-spacing: .15px;
     }
 
     .about-content, .contact-container {
@@ -681,7 +698,8 @@ footer {
         height: 28px;
     }
     .logo-text {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
+        letter-spacing: .1px;
     }
 
     .cta-button {
