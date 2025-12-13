@@ -121,10 +121,29 @@ nav {
 }
 
 .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-mark {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+    transition: transform .2s ease;
+}
+
+.logo-text {
     font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
+    letter-spacing: .3px;
+}
+
+.logo:hover .logo-mark {
+    transform: translateY(-2px);
 }
 
 .nav-links {
@@ -608,6 +627,14 @@ footer {
         font-size: 2.5rem;
     }
 
+    .logo-mark {
+        width: 32px;
+        height: 32px;
+    }
+    .logo-text {
+        font-size: 1.3rem;
+    }
+
     .about-content, .contact-container {
         grid-template-columns: 1fr;
     }
@@ -647,6 +674,14 @@ footer {
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 2rem;
+    }
+
+    .logo-mark {
+        width: 28px;
+        height: 28px;
+    }
+    .logo-text {
+        font-size: 1.2rem;
     }
 
     .cta-button {
