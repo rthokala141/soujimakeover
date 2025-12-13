@@ -118,7 +118,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 5%;
-    min-height: 140px; /* match desktop logo height for vertical centering */
+    min-height: 110px; /* match desktop logo height for vertical centering */
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -129,7 +129,7 @@ nav {
     gap: 10px;
     text-decoration: none;
     overflow: visible;
-    height: 140px; /* size by height only to avoid stretching */
+    height: 110px; /* size by height only to avoid stretching */
 }
 
 .logo-img {
@@ -234,7 +234,7 @@ nav {
     text-align: center;
     color: var(--dark-color);
     padding: 0 1rem;
-    margin-top: 140px; /* offset for fixed header */
+    margin-top: 110px; /* offset for fixed header */
 }
 
 .hero-content {
@@ -665,8 +665,8 @@ footer {
         font-size: 1.4rem;
         letter-spacing: .15px;
     }
-    .logo { height: 110px; }
-    .hero { margin-top: 110px; }
+    .logo { height: 90px; }
+    .hero { margin-top: 90px; }
     .logo-img { height: 100%; }
 
     .about-content, .contact-container {
@@ -718,8 +718,8 @@ footer {
         font-size: 1.25rem;
         letter-spacing: .1px;
     }
-    .logo { height: 90px; }
-    .hero { margin-top: 90px; }
+    .logo { height: 72px; }
+    .hero { margin-top: 72px; }
     .logo-img { height: 100%; }
 
     .cta-button {
