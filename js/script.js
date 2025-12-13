@@ -76,14 +76,14 @@ window.addEventListener('scroll', () => {
 });
 
 // Portfolio Gallery
-// Default fallback items (SVG placeholders) used if manifest.json is missing
+// Default fallback items (PNG photos) used if manifest.json is missing
 const defaultPortfolioItems = [
-    { image: 'images/portfolio/1.svg', title: 'Bridal Makeup', category: 'makeup' },
-    { image: 'images/portfolio/2.svg', title: 'Hair Styling', category: 'hairstyle' },
-    { image: 'images/portfolio/3.svg', title: 'Saree Draping', category: 'saree' },
-    { image: 'images/portfolio/4.svg', title: 'Party Makeup', category: 'makeup' },
-    { image: 'images/portfolio/5.svg', title: 'Bridal Hairstyle', category: 'hairstyle' },
-    { image: 'images/portfolio/6.svg', title: 'Traditional Look', category: 'saree' }
+    { image: 'images/portfolio/ChatGPT Image Dec 13, 2025 at 10_35_29 AM.png', title: 'Hair Styling - Soft Waves', category: 'hairstyle' },
+    { image: 'images/portfolio/ChatGPT Image Dec 13, 2025 at 10_37_06 AM.png', title: 'Bridal Makeup - Traditional', category: 'makeup' },
+    { image: 'images/portfolio/ChatGPT Image Dec 13, 2025 at 10_40_26 AM.png', title: 'Hair Styling - Side Profile', category: 'hairstyle' },
+    { image: 'images/portfolio/ChatGPT Image Dec 13, 2025 at 10_44_02 AM.png', title: 'Bridal Hairstyle - Jasmine Bun & Plait', category: 'hairstyle' },
+    { image: 'images/portfolio/ChatGPT Image Dec 13, 2025 at 10_46_00 AM.png', title: 'Bridal Makeup - Elegant Look', category: 'makeup' },
+    { image: 'images/portfolio/ChatGPT Image Dec 13, 2025 at 10_47_06 AM.png', title: 'Makeup Look - Classic', category: 'makeup' }
 ];
 
 const portfolioGrid = document.querySelector('.portfolio-grid');
@@ -98,7 +98,7 @@ function createPortfolioItems(items) {
         portfolioItem.setAttribute('data-category', item.category);
         
         portfolioItem.innerHTML = `
-            <img src="${item.image}" alt="${item.title}" onerror="this.onerror=null;this.src='images/portfolio/1.svg';">
+            <img src="${item.image}" alt="${item.title}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='images/portfolio/ChatGPT Image Dec 13, 2025 at 10_35_29 AM.png';">
             <div class="portfolio-overlay">
                 <h3>${item.title}</h3>
                 <p>${item.category}</p>
@@ -184,7 +184,7 @@ if (contactForm) {
             const mailto = `mailto:soujanyateja1209@gmail.com?subject=${subject}&body=${encoded}`;
             window.location.href = mailto; // Opens email client
         } else {
-            const waLink = `https://wa.me/918978422561?text=${encoded}`;
+            const waLink = `https://wa.me/918919406091?text=${encoded}`;
             window.open(waLink, '_blank');
         }
 
