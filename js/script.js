@@ -78,12 +78,12 @@ window.addEventListener('scroll', () => {
 // Portfolio Gallery
 // Default fallback items (PNG photos) used if manifest.json is missing
 const defaultPortfolioItems = [
-    { image: 'images/portfolio/ChatGPT Image Dec 13, 2025 at 10_35_29 AM.png', title: 'Hair Styling - Soft Waves', category: 'hairstyle' },
-    { image: 'images/portfolio/ChatGPT Image Dec 13, 2025 at 10_37_06 AM.png', title: 'Bridal Makeup - Traditional', category: 'makeup' },
-    { image: 'images/portfolio/ChatGPT Image Dec 13, 2025 at 10_40_26 AM.png', title: 'Hair Styling - Side Profile', category: 'hairstyle' },
-    { image: 'images/portfolio/ChatGPT Image Dec 13, 2025 at 10_44_02 AM.png', title: 'Bridal Hairstyle - Jasmine Bun & Plait', category: 'hairstyle' },
-    { image: 'images/portfolio/ChatGPT Image Dec 13, 2025 at 10_46_00 AM.png', title: 'Bridal Makeup - Elegant Look', category: 'makeup' },
-    { image: 'images/portfolio/ChatGPT Image Dec 13, 2025 at 10_47_06 AM.png', title: 'Makeup Look - Classic', category: 'makeup' }
+    { image: 'images/portfolio/hair-styling-soft-waves.png', title: 'Hair Styling - Soft Waves', category: 'hairstyle' },
+    { image: 'images/portfolio/bridal-makeup-traditional.png', title: 'Bridal Makeup - Traditional', category: 'makeup' },
+    { image: 'images/portfolio/hair-styling-side-profile.png', title: 'Hair Styling - Side Profile', category: 'hairstyle' },
+    { image: 'images/portfolio/bridal-hairstyle-jasmine-bun-plait.png', title: 'Bridal Hairstyle - Jasmine Bun & Plait', category: 'hairstyle' },
+    { image: 'images/portfolio/bridal-makeup-elegant.png', title: 'Bridal Makeup - Elegant Look', category: 'makeup' },
+    { image: 'images/portfolio/makeup-look-classic.png', title: 'Makeup Look - Classic', category: 'makeup' }
 ];
 
 const portfolioGrid = document.querySelector('.portfolio-grid');
@@ -98,7 +98,7 @@ function createPortfolioItems(items) {
         portfolioItem.setAttribute('data-category', item.category);
         
         portfolioItem.innerHTML = `
-            <img src="${item.image}" alt="${item.title}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='images/portfolio/ChatGPT Image Dec 13, 2025 at 10_35_29 AM.png';">
+            <img src="${item.image}" alt="${item.title}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='images/portfolio/hair-styling-soft-waves.png';">
             <div class="portfolio-overlay">
                 <h3>${item.title}</h3>
                 <p>${item.category}</p>
