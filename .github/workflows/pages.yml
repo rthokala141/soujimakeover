@@ -1,8 +1,7 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (manual)
 
 on:
-  push:
-    branches: [ main ]
+  # Only run manually. This repository is deployed on Vercel; GitHub Pages is optional.
   workflow_dispatch:
 
 permissions:
