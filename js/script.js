@@ -76,7 +76,8 @@ window.addEventListener('scroll', () => {
 });
 
 // Portfolio Gallery
-const portfolioItems = [
+// Default fallback items (SVG placeholders) used if manifest.json is missing
+const defaultPortfolioItems = [
     { image: 'images/portfolio/1.svg', title: 'Bridal Makeup', category: 'makeup' },
     { image: 'images/portfolio/2.svg', title: 'Hair Styling', category: 'hairstyle' },
     { image: 'images/portfolio/3.svg', title: 'Saree Draping', category: 'saree' },
@@ -88,10 +89,10 @@ const portfolioItems = [
 const portfolioGrid = document.querySelector('.portfolio-grid');
 
 // Function to create portfolio items
-function createPortfolioItems() {
+function createPortfolioItems(items) {
     portfolioGrid.innerHTML = ''; // Clear existing items
     
-    portfolioItems.forEach((item, index) => {
+    items.forEach((item, index) => {
         const portfolioItem = document.createElement('div');
         portfolioItem.className = 'portfolio-item';
         portfolioItem.setAttribute('data-category', item.category);
@@ -108,8 +109,24 @@ function createPortfolioItems() {
     });
 }
 
+// Load portfolio items from manifest.json if available, else use defaults
+async function loadPortfolio() {
+    try {
+        const res = await fetch('images/portfolio/manifest.json', { cache: 'no-cache' });
+        if (!res.ok) throw new Error('manifest not found');
+        const data = await res.json();
+        // Expecting an array of { image, title, category }
+        const isValid = Array.isArray(data) && data.every(it => it && typeof it.image === 'string');
+        if (!isValid) throw new Error('invalid manifest structure');
+        createPortfolioItems(data);
+    } catch (e) {
+        // Fallback to default set (SVGs)
+        createPortfolioItems(defaultPortfolioItems);
+    }
+}
+
 // Initialize portfolio
-createPortfolioItems();
+loadPortfolio();
 
 // Testimonial Slider
 let currentTestimonial = 0;

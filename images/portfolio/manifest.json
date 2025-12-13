@@ -1,0 +1,8 @@
+[
+  { "image": "images/portfolio/1.svg", "title": "Bridal Makeup", "category": "makeup" },
+  { "image": "images/portfolio/2.svg", "title": "Hair Styling", "category": "hairstyle" },
+  { "image": "images/portfolio/3.svg", "title": "Saree Draping", "category": "saree" },
+  { "image": "images/portfolio/4.svg", "title": "Party Makeup", "category": "makeup" },
+  { "image": "images/portfolio/5.svg", "title": "Bridal Hairstyle", "category": "hairstyle" },
+  { "image": "images/portfolio/6.svg", "title": "Traditional Look", "category": "saree" }
+]

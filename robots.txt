@@ -1,0 +1,5 @@
+# robots.txt for Soujanya Makeovers
+User-agent: *
+Allow: /
+
+Sitemap: https://soujanyamakeovers.vercel.app/sitemap.xml
