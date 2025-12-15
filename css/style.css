@@ -136,6 +136,7 @@ nav {
     height: 100%;      /* follow the container height */
     width: auto;       /* preserve aspect ratio */
     display: block;
+    max-height: 96px;  /* hard cap to avoid oversize if container height fails */
 }
 
 .logo-mark {
@@ -667,7 +668,7 @@ footer {
     }
     .logo { height: 80px; }
     .hero { margin-top: 80px; }
-    .logo-img { height: 100%; }
+    .logo-img { height: 100%; max-height: 80px; }
 
     .about-content, .contact-container {
         grid-template-columns: 1fr;
@@ -720,7 +721,7 @@ footer {
     }
     .logo { height: 64px; }
     .hero { margin-top: 64px; }
-    .logo-img { height: 100%; }
+    .logo-img { height: 100%; max-height: 64px; }
 
     .cta-button {
         padding: 10px 20px;
