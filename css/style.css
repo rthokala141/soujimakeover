@@ -210,6 +210,12 @@ nav {
     width: 100%;
 }
 
+/* Keep CTA text visible even when it receives 'active' */
+.nav-links .cta-button,
+.nav-links .cta-button.active {
+    color: #fff;
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -227,14 +233,14 @@ nav {
 
 /* Hero Section */
 .hero {
-    min-height: calc(100vh - 96px); /* fill viewport minus fixed header */
+    min-height: calc(80vh - 96px); /* reduced height on desktop */
     /* Soft brand gradient background */
     background: linear-gradient(135deg, rgba(255, 107, 107, 0.25) 0%, rgba(78, 205, 196, 0.25) 100%);
     display: flex;
     align-items: center;
     text-align: center;
     color: var(--dark-color);
-    padding: 0 1rem;
+    padding: 32px 1rem; /* add some breathing room */
 }
 
 .hero-content {
@@ -671,7 +677,7 @@ footer {
         letter-spacing: .15px;
     }
     .logo { height: 80px; }
-    .hero { min-height: calc(100vh - 80px); }
+    .hero { min-height: calc(75vh - 80px); }
     .logo-img { height: 100%; max-height: 80px; }
 
     .about-content, .contact-container {
@@ -724,7 +730,7 @@ footer {
         letter-spacing: .1px;
     }
     .logo { height: 64px; }
-    .hero { min-height: calc(100vh - 64px); }
+    .hero { min-height: calc(72vh - 64px); }
     .logo-img { height: 100%; max-height: 64px; }
 
     .cta-button {
